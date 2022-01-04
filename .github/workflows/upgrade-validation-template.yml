@@ -36,14 +36,12 @@ jobs:
       with:
         node_image: ${{ matrix.kindImage }}
 
-    - name: Show Kubernetes version
-      run: kubectl version
-
-    - name: Show Kubernetes nodes
-      run: kubectl get nodes -o wide
-        
-    - name: Show Helm version
-      run: helm version
+    - name: Show versions
+      run: |
+        echo "kubectl version:"
+        kubectl version
+        echo "helm version:"
+        helm version
 
     - name: Install Helm chart (latest)
       run: |
