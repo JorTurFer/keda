@@ -43,7 +43,7 @@ jobs:
         echo "helm version:"
         helm version
 
-    - name: Install Helm chart (latest)
+    - name: Install latest KEDA release
       run: |
         helm repo add kedacore https://kedacore.github.io/charts
         helm repo update
