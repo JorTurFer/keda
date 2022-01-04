@@ -1,0 +1,40 @@
+on:
+  workflow_call:
+    inputs:
+      kubernetesVersion:
+        required: true
+        type: string
+      kindImage:
+        required: true
+        type: string
+
+name: Validate upgrade (${{ inputs.kubernetesVersion }})
+
+runs-on: ubuntu-latest
+
+steps:
+- name: Check out code
+  uses: actions/checkout@v2
+
+- name: Helm install
+  uses: Azure/setup-helm@v1
+  
+- name: Create k8s ${{ inputs.kubernetesVersion }} Kind Cluster
+  uses: helm/kind-action@v1.2.0
+  with:
+    node_image: ${{ inputs.kindImage }}
+
+- name: Show Kubernetes version
+  run: kubectl version
+
+- name: Show Kubernetes nodes
+  run: kubectl get nodes -o wide
+    
+- name: Show Helm version
+  run: helm version
+
+- name: Install Helm chart (latest)
+  run: |
+    helm repo add kedacore https://kedacore.github.io/charts
+    helm repo update
+    helm install keda kedacore/keda --namespace keda --create-namespace
