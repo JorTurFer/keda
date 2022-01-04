@@ -2,31 +2,31 @@ on:
   workflow_call:
 
 jobs:
-  validate-upgrade-build:
-    name: Image generation
-    container: ghcr.io/kedacore/build-tools:main
-    runs-on: ubuntu-latest
+  # validate-upgrade-build:
+  #   name: Image generation
+  #   container: ghcr.io/kedacore/build-tools:main
+  #   runs-on: ubuntu-latest
 
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
+  #   steps:
+  #   - name: Check out code
+  #     uses: actions/checkout@v2
 
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
-      with:
-        registry: ghcr.io
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+  #   - name: Login to GitHub Container Registry
+  #     uses: docker/login-action@v1
+  #     with:
+  #       registry: ghcr.io
+  #       username: ${{ github.actor }}
+  #       password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build current version
-      run : IMAGE_REPO=jorturfer make publish
-      env:
-        E2E_IMAGE_TAG: "${{ github.sha }}"
+  #   - name: Build current version
+  #     run : IMAGE_REPO=jorturfer make publish
+  #     env:
+  #       E2E_IMAGE_TAG: "${{ github.sha }}"
 
   validate-upgrade:
     needs: validate-upgrade-build
     name: ${{ matrix.kubernetesVersion }}
-    container: ghcr.io/kedacore/build-tools:main
+    # container: ghcr.io/kedacore/build-tools:main
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -75,4 +75,4 @@ jobs:
     - name: Deploy current images
       run : IMAGE_REPO=jorturfer make deploy
       env:
-        E2E_IMAGE_TAG: "${{ github.sha }}"
+        E2E_IMAGE_TAG: "13529527e58b2656a9c867030e51bfe6b5c37bc2"
