@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+      
     - name: Build current version
       run : IMAGE_REPO=jorturfer make publish
       env:
