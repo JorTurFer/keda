@@ -5,8 +5,9 @@ jobs:
   validate-upgrade-build:
     name: Image generation
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Build current version
+    - name: Build current version
       run : IMAGE_REPO=jorturfer make publish
       env:
         E2E_IMAGE_TAG: "${{ gihub.sha }}"
