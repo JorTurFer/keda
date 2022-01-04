@@ -4,12 +4,13 @@ on:
 jobs:
   validate-upgrade-build:
     name: Image generation
+    container: ghcr.io/kedacore/build-tools:main
     runs-on: ubuntu-latest
 
     steps:
     - name: Check out code
       uses: actions/checkout@v2
-      
+
     - name: Build current version
       run : IMAGE_REPO=jorturfer make publish
       env:
@@ -18,6 +19,7 @@ jobs:
   validate-upgrade:
     needs: validate-upgrade-build
     name: ${{ matrix.kubernetesVersion }}
+    container: ghcr.io/kedacore/build-tools:main
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
