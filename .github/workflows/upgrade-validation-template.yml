@@ -24,9 +24,9 @@ jobs:
   #       E2E_IMAGE_TAG: "${{ github.sha }}"
 
   validate-upgrade:
-    needs: validate-upgrade-build
+    # needs: validate-upgrade-build
     name: ${{ matrix.kubernetesVersion }}
-    # container: ghcr.io/kedacore/build-tools:main
+    container: ghcr.io/kedacore/build-tools:main
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
