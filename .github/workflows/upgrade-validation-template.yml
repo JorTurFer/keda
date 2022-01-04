@@ -3,7 +3,7 @@ on:
 
 jobs:
   validate-upgrade:
-    name: Validate upgrade (${{ matrix.kubernetesVersion }})
+    name: ${{ matrix.kubernetesVersion }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
