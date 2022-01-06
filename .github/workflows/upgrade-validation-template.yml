@@ -90,3 +90,4 @@ jobs:
 
     - name: Clean resources
       run: kubectl delete -f .github/assets/test-manifest.yml 
+      if: always()
