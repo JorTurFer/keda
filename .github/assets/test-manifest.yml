@@ -1,8 +1,15 @@
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: upgrade-test
+---
 # ScaledObject
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: scaledobject-workload
+  namespace: upgrade-test
 spec:
   replicas: 1
   selector:
@@ -29,6 +36,7 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
   name: scaledobject-autoscaling
+  namespace: upgrade-test
 spec:
   scaleTargetRef:
     name: scaledobject-workload
@@ -63,6 +71,7 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledJob
 metadata:
   name: scaledjob-autoscaling
+  namespace: upgrade-test
 spec:
   jobTargetRef:
     parallelism: 1

@@ -77,13 +77,16 @@ jobs:
         helm repo update
         helm install keda kedacore/keda --namespace keda --create-namespace
 
-    - name: Deploy workloads with autoscaling
+    - name: Deploy workloads
       run: kubectl apply -f .github/assets/test-manifest.yml
 
-    - name: Deploy current images
+    - name: Deploy current version
       run : IMAGE_REPO=jorturfer make deploy
       env:
         E2E_IMAGE_TAG: "13529527e58b2656a9c867030e51bfe6b5c37bc2"
 
-    - name: Redeploy workloads with autoscaling
+    - name: Redeploy workloads
       run: kubectl apply -f .github/assets/test-manifest.yml
+
+    - name: Clean resources
+      run: kubectl delete -f .github/assets/test-manifest.yml 
