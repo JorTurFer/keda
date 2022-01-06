@@ -121,8 +121,8 @@ type ScaleTarget struct {
 type ScaleTriggers struct {
 	Type string `json:"type"`
 	// +optional
-	Name     string         `json:"name,omitempty"`
-	Metadata map[string]int `json:"metadata"`
+	Name     string            `json:"name,omitempty"`
+	Metadata map[string]string `json:"metadata"`
 	// +optional
 	AuthenticationRef *ScaledObjectAuthRef `json:"authenticationRef,omitempty"`
 	// +optional
