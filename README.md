@@ -1,5 +1,5 @@
 <p align="center"><img src="images/logos/keda-word-colour.png" width="300"/></p>
-<p style="font-size: 25px" align="center"><b>Kubernetes-based Event Driven Autoscaling</b></p>
+<p style="font-size: 25px" align="center"><bf>Kubernetes-based Event Driven Autoscaling</b></p>
 <p style="font-size: 25px" align="center">
 <a href="https://github.com/kedacore/keda/actions?query=workflow%3Amain-build"><img src="https://github.com/kedacore/keda/workflows/main-build/badge.svg" alt="main build"></a>
 <a href="https://github.com/kedacore/keda/actions?query=workflow%3Anightly-e2e-test"><img src="https://github.com/kedacore/keda/workflows/nightly-e2e-test/badge.svg" alt="nightly e2e"></a>
