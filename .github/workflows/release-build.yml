@@ -100,3 +100,7 @@ jobs:
             keda-${{ steps.get_version.outputs.VERSION }}-crds.yaml
             keda-scalers-schema-${{ steps.get_version.outputs.VERSION }}.yaml
             keda-scalers-schema-${{ steps.get_version.outputs.VERSION }}.json
+
+      - id: ls
+        run: |
+          ls
