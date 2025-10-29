@@ -59,7 +59,7 @@ SHELL = /usr/bin/env bash -o pipefail
 SCALERS_SCHEMA_SCALERS_BUILDER_FILE ?= pkg/scaling/scalers_builder.go
 SCALERS_SCHEMA_SCALERS_FILES_DIR ?= pkg/scalers
 SCALERS_SCHEMA_OUTPUT_FILE_PATH ?= schema/generated/
-SCALERS_SCHEMA_OUTPUT_FILE_NAME ?= scalers-metadata-schema
+SCALERS_SCHEMA_OUTPUT_FILE_NAME ?= scalers-schema
 
 ifneq '${VERSION}' 'main'
   OUTPUT_FILE_NAME :="${OUTPUT_FILE_NAME}-${VERSION}"
