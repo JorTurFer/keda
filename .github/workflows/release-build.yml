@@ -99,7 +99,3 @@ jobs:
             keda-${{ steps.get_version.outputs.VERSION }}-core.yaml
             keda-${{ steps.get_version.outputs.VERSION }}-crds.yaml
             scalers-schema-${{ steps.get_version.outputs.VERSION }}.*
-
-      - id: ls
-        run: |
-          ls
