@@ -66,6 +66,7 @@ jobs:
         run: make release
         env:
           VERSION: ${{ steps.get_version.outputs.VERSION }}
+          SCALERS_SCHEMA_OUTPUT_FILE_PATH: ${{ github.workspace }}
 
       # - name: Set up Docker Buildx
       #   uses: docker/setup-buildx-action@c47758b77c9736f4b2ef4073d4d51994fabfe349 # v3.7.1
@@ -90,7 +91,7 @@ jobs:
       #     VERSION: ${{ steps.get_version.outputs.VERSION }}
 
       # Add artifacts the release
-      - name: Release
+      - name: Upload Release artifacts
         uses: softprops/action-gh-release@6da8fa9354ddfdc4aeace5fc48d7f679b5214090 # v2.4.1
         with:
           files: |
